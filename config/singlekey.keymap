@@ -1,0 +1,38 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &str_aaa   // P1.04
+                &str_aaa   // P1.06
+            >;
+        };
+    };
+};
+
+&behaviors {
+    str_aaa: behavior_str_aaa {
+        compatible = "zmk,behavior-macro";
+        label = "AAA macro";
+        macro-commands = < &macro_tap "AAA" >;
+    };
+};
+
+/ {
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+
+        rows = <2>;
+        columns = <1>;
+
+        row-gpios = <
+            &gpio1 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)   /* P1.04 */
+            &gpio1 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)   /* P1.06 */
+        >;
+
+        col-gpios = <>;
+        debounce-press-ms = <5>;
+        debounce-release-ms = <5>;
+    };
+};
