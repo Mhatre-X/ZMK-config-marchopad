@@ -13,7 +13,7 @@ jobs:
       image: zmkfirmware/zmk-build-arm:stable
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Build firmware
       run: west build -s zmk/app -b nice_nano_v2 -- -DSHIELD=singlekey
